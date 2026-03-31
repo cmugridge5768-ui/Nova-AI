@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Editor - Bithub</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .editor {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 50px;
+    }
+    textarea {
+      width: 80%;
+      height: 300px;
+      background-color: #2e2e4d;
+      color: #fff;
+      padding: 10px;
+      font-family: monospace;
+      font-size: 16px;
+      border-radius: 5px;
+      border: none;
+      resize: none;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #4cafef;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    iframe {
+      width: 80%;
+      height: 300px;
+      margin-top: 20px;
+      border: 1px solid #4cafef;
+      border-radius: 5px;
+      background-color: #1e1e2f;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Bithub</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="courses.html">Courses</a>
+      <a href="editor.html">Code Editor</a>
+    </nav>
+  </header>
+
+  <main class="editor">
+    <h2>Code Editor</h2>
+    <textarea id="code" placeholder="Write your HTML/JS code here"></textarea>
+    <button onclick="runCode()">Run Code</button>
+    <iframe id="output"></iframe>
+  </main>
+
+  <script>
+    function runCode() {
+      const code = document.getElementById('code').value;
+      const output = document.getElementById('output').contentWindow.document;
+      output.open();
+      output.write(code);
+      output.close();
+    }
+  </script>
+</body>
+</html>
